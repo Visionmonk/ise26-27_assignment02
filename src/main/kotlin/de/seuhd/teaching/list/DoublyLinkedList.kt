@@ -1,5 +1,7 @@
 package de.seuhd.teaching.list
 
+private const val LIMIT = 1000
+
 /**
  * A doubly linked list of [Double] values.
  */
@@ -95,7 +97,8 @@ class DoublyLinkedList {
      * Returns the value at position [index].
      */
     fun get(index: Int): Double {
-        if(index > 1000) println("Index exceeds the limit")
+        if (index > LIMIT) println("Index exceeds the limit")
+        if (index !in 0..<length) throw IndexOutOfBoundsException("index out of bounds")
         var element = begin
         repeat(index) { element = element!!.next }
         return element!!.value
